@@ -1,8 +1,15 @@
+import { Layout } from "antd";
+import Navbar from "./Components/UI/Navbar";
+import AppRoutes from "./routes/AppRoutes";
+
 const App = () => {
   return (
-    <div>
-      <h1>Hello World!</h1>
-    </div>
+    <Layout>
+      <Navbar />
+      <Layout.Content>
+        <AppRoutes />
+      </Layout.Content>
+    </Layout>
   );
 };
 
