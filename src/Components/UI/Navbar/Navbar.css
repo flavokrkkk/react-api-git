@@ -3,6 +3,10 @@
   margin: 0 0 0 0;
 }
 
+.navbar__layout {
+  margin-bottom: 30px;
+}
+
 .navbar__wrapper {
   display: flex;
   justify-content: space-between;

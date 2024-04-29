@@ -5,9 +5,10 @@ import { RoutePath } from "../../../routes";
 import { useAppSelector } from "../../../hooks/hooks";
 import { useActions } from "../../../hooks/useActions";
 import "./Navbar.css";
+import { AppSelectors } from "../../../store/selectors/selectors";
 
 const Navbar: FC = () => {
-  const { isAuth, user } = useAppSelector((state) => state.authReducer);
+  const { isAuth, user } = useAppSelector(AppSelectors);
 
   const navigate = useNavigate();
 
@@ -22,7 +23,7 @@ const Navbar: FC = () => {
   };
 
   return (
-    <Layout.Header>
+    <Layout.Header className="navbar__layout">
       <div className="navbar__wrapper">
         <h1 className="navbar__title">Event</h1>
         {isAuth ? (

@@ -4,18 +4,20 @@ import { rules } from "../../utils/rules";
 import { useAppSelector } from "../../hooks/hooks";
 import "./LoginForm.css";
 import { useActions } from "../../hooks/useActions";
+import { AppSelectors } from "../../store/selectors/selectors";
 
 const LoginForm: FC = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
 
   const { login } = useActions();
-  const { isError, isLoading } = useAppSelector((state) => state.authReducer);
+  const { isError, isLoading } = useAppSelector(AppSelectors);
 
   const handleSubmit = () => {
     login(username, password);
   };
 
+  //onChange
   const handleChangeName = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.stopPropagation();
     setUsername(event.target.value);

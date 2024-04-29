@@ -1,5 +1,5 @@
-import Event from "../Pages/Event";
-import Login from "../Pages/Login";
+import Event from "../Pages/Event/Event";
+import Login from "../Pages/Login/Login";
 
 //Прописываем interface для routes
 export interface IRoute {
