@@ -1,0 +1,17 @@
+.form {
+  width: 400px;
+}
+
+.form__item {
+  margin: 20px 0px 0px 0px;
+  text-align: center;
+}
+
+.form__input {
+  margin: 0px 0px 20px 0px;
+}
+
+.form__error {
+  color: red;
+  text-align: center;
+}

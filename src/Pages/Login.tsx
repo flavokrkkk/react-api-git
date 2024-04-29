@@ -1,12 +1,14 @@
-import { Layout, Row } from "antd";
+import { Card, Layout, Row } from "antd";
 import { FC } from "react";
-import LoginForm from "../Components/LoginForm";
+import LoginForm from "../Components/LoginForm/LoginForm";
 
 const Login: FC = () => {
   return (
     <Layout>
       <Row justify={"center"} align={"middle"} className="h100">
-        <LoginForm />
+        <Card>
+          <LoginForm />
+        </Card>
       </Row>
     </Layout>
   );
