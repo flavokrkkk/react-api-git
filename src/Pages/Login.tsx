@@ -1,8 +1,14 @@
-const Login = () => {
+import { Layout, Row } from "antd";
+import { FC } from "react";
+import LoginForm from "../Components/LoginForm";
+
+const Login: FC = () => {
   return (
-    <div>
-      <h1>Login!</h1>
-    </div>
+    <Layout>
+      <Row justify={"center"} align={"middle"} className="h100">
+        <LoginForm />
+      </Row>
+    </Layout>
   );
 };
 

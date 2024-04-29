@@ -2,13 +2,14 @@ import { Route, Routes } from "react-router-dom";
 import { privateRoutes, publicRoutes } from "./index";
 import Event from "../Pages/Event";
 import Login from "../Pages/Login";
+import { useAppSelector } from "../hooks/hooks";
 
 const AppRoutes = () => {
-  const auth = false;
+  const { isAuth } = useAppSelector((state) => state.authReducer);
 
   return (
     <>
-      {auth ? (
+      {isAuth ? (
         <Routes>
           {privateRoutes.map(({ path, component }) => (
             <Route key={path} path={path} Component={component} />

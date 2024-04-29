@@ -1,6 +1,7 @@
 import { Layout } from "antd";
 import Navbar from "./Components/UI/Navbar";
 import AppRoutes from "./routes/AppRoutes";
+import "./App.css";
 
 const App = () => {
   return (
