@@ -3,16 +3,18 @@ import { FC, useEffect, useState } from "react";
 import EventCalendar from "../../Components/Calendar/EventCalendar";
 import "./Event.css";
 import ModalEvent from "../../Components/UI/Modal/ModalEvent";
-import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
-import { EventActionCreators } from "../../store/reducers/eventSlice/action-creators";
-import { EventSelectors } from "../../store/selectors/selectors";
+import { useAppSelector } from "../../hooks/hooks";
+import { AuthSelectors, EventSelectors } from "../../store/selectors/selectors";
+import { useActions } from "../../hooks/useActions";
+import { IEvent } from "../../models/IEvent";
 
 const Event: FC = () => {
   const [modalVisible, setModalVisible] = useState<boolean>(false);
 
-  const dispatch = useAppDispatch();
+  const { fetchUser, createEvent, fetchEvents } = useActions();
 
-  const { users, isError } = useAppSelector(EventSelectors);
+  const { users, isError, events } = useAppSelector(EventSelectors);
+  const { user } = useAppSelector(AuthSelectors);
 
   const showModal = () => {
     setModalVisible(true);
@@ -22,8 +24,14 @@ const Event: FC = () => {
     setModalVisible(false);
   };
 
+  const handleSubmitEvent = (event: IEvent) => {
+    setModalVisible(false);
+    createEvent(event);
+  };
+
   useEffect(() => {
-    dispatch(EventActionCreators.fetchUser());
+    fetchUser();
+    fetchEvents(user.username);
   }, []);
 
   if (isError) {
@@ -38,8 +46,13 @@ const Event: FC = () => {
           Добавить событие
         </Button>
       </Row>
-      <EventCalendar events={[]} />
-      <ModalEvent data={users} visible={modalVisible} onCancel={closeModal} />
+      <EventCalendar events={events} />
+      <ModalEvent
+        submit={handleSubmitEvent}
+        data={users}
+        visible={modalVisible}
+        onCancel={closeModal}
+      />
     </Layout>
   );
 };

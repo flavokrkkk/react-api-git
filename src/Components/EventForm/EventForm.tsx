@@ -1,5 +1,5 @@
 import { Button, DatePicker, Form, Input, Select } from "antd";
-import { FC, useEffect, useState } from "react";
+import { FC, useState } from "react";
 import { rules } from "../../utils/rules";
 import "./EventForm.css";
 import { Option } from "antd/es/mentions";
@@ -12,9 +12,10 @@ import { AuthSelectors } from "../../store/selectors/selectors";
 
 interface EventFormProps {
   users: IUser[];
+  submit: (event: IEvent) => void;
 }
 
-const EventForm: FC<EventFormProps> = ({ users }) => {
+const EventForm: FC<EventFormProps> = ({ users, submit }) => {
   const [event, setEvent] = useState<IEvent>({
     author: "",
     date: "",
@@ -39,12 +40,8 @@ const EventForm: FC<EventFormProps> = ({ users }) => {
   };
 
   const handleSubmit = () => {
-    console.log(event);
+    submit({ ...event, author: user.username });
   };
-
-  useEffect(() => {
-    setEvent({ ...event, author: user.username });
-  }, []);
 
   return (
     <Form className="modal__form" onFinish={handleSubmit}>
@@ -63,7 +60,7 @@ const EventForm: FC<EventFormProps> = ({ users }) => {
       >
         <DatePicker
           className="modal__data-picker"
-          onChange={(date) => handleSelectDate(date)}
+          onChange={handleSelectDate}
         />
       </Form.Item>
 
