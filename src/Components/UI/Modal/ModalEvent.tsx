@@ -1,13 +1,15 @@
 import { Modal } from "antd";
 import { FC } from "react";
 import EventForm from "../../EventForm/EventForm";
+import { IUser } from "../../../models/IUser";
 
 interface ModalProps {
   visible: boolean;
   onCancel: () => void;
+  data: IUser[];
 }
 
-const ModalEvent: FC<ModalProps> = ({ visible, onCancel }) => {
+const ModalEvent: FC<ModalProps> = ({ visible, onCancel, data }) => {
   return (
     <div>
       <Modal
@@ -16,7 +18,7 @@ const ModalEvent: FC<ModalProps> = ({ visible, onCancel }) => {
         footer={null}
         onCancel={onCancel}
       >
-        <EventForm />
+        <EventForm users={data} />
       </Modal>
     </div>
   );

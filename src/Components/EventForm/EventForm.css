@@ -1,0 +1,14 @@
+.modal__form {
+  margin-top: 30px;
+}
+
+.modal__data-picker {
+  margin-left: 35px;
+  display: block;
+}
+
+.modal__select {
+  max-width: 338px;
+  margin-left: 35px;
+  width: 70px;
+}

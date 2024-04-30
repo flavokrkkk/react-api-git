@@ -1,11 +1,18 @@
 import { Button, Layout, Row } from "antd";
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import EventCalendar from "../../Components/Calendar/EventCalendar";
 import "./Event.css";
 import ModalEvent from "../../Components/UI/Modal/ModalEvent";
+import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
+import { EventActionCreators } from "../../store/reducers/eventSlice/action-creators";
+import { EventSelectors } from "../../store/selectors/selectors";
 
 const Event: FC = () => {
   const [modalVisible, setModalVisible] = useState<boolean>(false);
+
+  const dispatch = useAppDispatch();
+
+  const { users, isError } = useAppSelector(EventSelectors);
 
   const showModal = () => {
     setModalVisible(true);
@@ -14,6 +21,14 @@ const Event: FC = () => {
   const closeModal = () => {
     setModalVisible(false);
   };
+
+  useEffect(() => {
+    dispatch(EventActionCreators.fetchUser());
+  }, []);
+
+  if (isError) {
+    return <h2>{isError}</h2>;
+  }
 
   return (
     <Layout>
@@ -24,7 +39,7 @@ const Event: FC = () => {
         </Button>
       </Row>
       <EventCalendar events={[]} />
-      <ModalEvent visible={modalVisible} onCancel={closeModal} />
+      <ModalEvent data={users} visible={modalVisible} onCancel={closeModal} />
     </Layout>
   );
 };

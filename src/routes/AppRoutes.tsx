@@ -3,10 +3,10 @@ import { privateRoutes, publicRoutes } from "./index";
 import Event from "../Pages/Event/Event";
 import Login from "../Pages/Login/Login";
 import { useAppSelector } from "../hooks/hooks";
-import { AppSelectors } from "../store/selectors/selectors";
+import { AuthSelectors } from "../store/selectors/selectors";
 
 const AppRoutes = () => {
-  const { isAuth } = useAppSelector(AppSelectors);
+  const { isAuth } = useAppSelector(AuthSelectors);
 
   return (
     <>

@@ -5,10 +5,10 @@ import { RoutePath } from "../../../routes";
 import { useAppSelector } from "../../../hooks/hooks";
 import { useActions } from "../../../hooks/useActions";
 import "./Navbar.css";
-import { AppSelectors } from "../../../store/selectors/selectors";
+import { AuthSelectors } from "../../../store/selectors/selectors";
 
 const Navbar: FC = () => {
-  const { isAuth, user } = useAppSelector(AppSelectors);
+  const { isAuth, user } = useAppSelector(AuthSelectors);
 
   const navigate = useNavigate();
 

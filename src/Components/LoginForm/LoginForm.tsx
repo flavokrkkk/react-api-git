@@ -4,14 +4,14 @@ import { rules } from "../../utils/rules";
 import { useAppSelector } from "../../hooks/hooks";
 import "./LoginForm.css";
 import { useActions } from "../../hooks/useActions";
-import { AppSelectors } from "../../store/selectors/selectors";
+import { AuthSelectors } from "../../store/selectors/selectors";
 
 const LoginForm: FC = () => {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
   const { login } = useActions();
-  const { isError, isLoading } = useAppSelector(AppSelectors);
+  const { isError, isLoading } = useAppSelector(AuthSelectors);
 
   const handleSubmit = () => {
     login(username, password);

@@ -1,3 +1,5 @@
 import { RootState } from "./../index";
 
-export const AppSelectors = (state: RootState) => state.authReducer;
+export const AuthSelectors = (state: RootState) => state.authReducer;
+
+export const EventSelectors = (state: RootState) => state.eventReducer;
