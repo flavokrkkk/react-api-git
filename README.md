@@ -10,4 +10,4 @@ Task scheduler
 # Скриншоты данного проекта
 
 <h2>Основная страница где находится весь интерактив и динамически подгруженный функционал</h2>
-<img src="https://github.com/flavokrkkk/react-api-git/tree/master/screens/2024-05-01_01-32-26.png">
+<img src="https://github.com/flavokrkkk/react-api-git/blob/master/screens/2024-05-01_01-32-26.png">
